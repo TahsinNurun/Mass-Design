@@ -17,6 +17,9 @@ import NoMatch from './Component/NoMatch/NoMatch';
 import React, { createContext } from 'react';
 import { useState } from 'react';
 import PrivateRoute from './Component/PrivateRoute/PrivateRoute';
+import ManageVegetables from './Component/ManageVegetables/ManageVegetables';
+import AddVegetableByAdmin from './Component/AddVegetableByAdmin/AddVegetableByAdmin';
+import CheckOut from './Component/CheckOut/CheckOut';
 
 
 export const UserContext = createContext();
@@ -38,19 +41,24 @@ function App() {
           <Route  path="/login">
             <Login></Login>
           </Route>
-          <PrivateRoute path="/orders/:name">
+          <PrivateRoute path="/checkOut/:id">
+            <CheckOut></CheckOut>
+          </PrivateRoute>
+          <PrivateRoute path="/orderSummary">
             <Orders></Orders>
           </PrivateRoute>
-          <Route path="/Admin">
-            <Admin></Admin>
+          <Route path="/addVegetableByAdmin">
+            <AddVegetableByAdmin></AddVegetableByAdmin>
           </Route>
-          <Route path="/Deals">
+          <PrivateRoute path="/manageVegetables">
+            <ManageVegetables></ManageVegetables>
+          </PrivateRoute>
+          <Route path="/deals">
             <Deals></Deals>
           </Route>
           <Route path="*">
             <NoMatch></NoMatch>
           </Route>
-
         </Switch>
       </Router>
     </UserContext.Provider>

@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router-dom';
+import imageG from '../../icons/google.png';
+import imageF from '../../icons/facebook.png'
 
 
 
@@ -28,10 +30,12 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         firebase.auth()
             .signInWithPopup(provider)
-            .then((result) => {               
+            .then((result) => {        
+                
+                // console.log( result.user );
                 const {displayName, email} = result.user;
                 const loggedInUser = {name: displayName, email}
-                console.log(loggedInUser);
+                // console.log(loggedInUser);
                 setLoggedInUser(loggedInUser);
                 history.replace(from);
 
@@ -46,10 +50,10 @@ const Login = () => {
     return (
         <div className="container text-center" >
             <p>Please Create an Account to place order</p>
-            <button onClick={handleGoogleSignIn} className="btn btn-primary">Sign In Using Google</button>
+            <button onClick={handleGoogleSignIn} className="btn btn-primary"><img style={{ height: '20px', padding: '2px' }} src={imageG} alt="" />Sign In Using Google</button>
             <br/>
             <br/>
-            <button className="btn btn-primary btn-lg disabled">Sign In Using Facebook</button>
+            <button className="btn btn-primary btn-lg disabled"><img style={{ height: '20px', padding: '2px' }} src={imageF} alt="" />Sign In Using Facebook</button>
         </div>
     );
 };

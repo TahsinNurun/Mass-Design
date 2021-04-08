@@ -1,27 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-// import fakeData from '../../Fake vege Data/data.json'
-import SingleVeg from '../SingleVeg/SingleVeg';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../App';
 
+const Orders = () => {
 
-const Orders = (props) => {
-    
-    // const {name} = useParams();
-    const {id} = useParams();
-    const [singleVeg, setSingleVeg] = useState({});
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [orders, setOrders] = useState([]);
 
-    useEffect(()=> {
-        fetch('http://localhost:5000/vegetables/'+id)
-        .then(res =>res.json())
-        .then(data => setSingleVeg(data))
-    },[id])
-
-    // const singleVeg = fakeData.find(singleVeg => singleVeg.name === name);
-    console.log(singleVeg);
+    useEffect(() => {
+        fetch('http://localhost:5000/orders?email='+loggedInUser.email)
+        .then(res => res.json())
+        .then(data => setOrders(data));
+    },[])
     
     return (
-        <div className = "container" style={{height:"50px", margin: "2px 20px"}} >
-            <SingleVeg veg ={singleVeg}></SingleVeg>
+        <div style={{textAlign:'center'}}>
+            <h5>This is {loggedInUser.email}'s order summary</h5>
+            <p>You have: {orders.length} orders</p>
+            {
+                orders.map(order => <li>To be delivered on {(new Date(order.orderDate).toDateString('dd/MM/yyyy'))} for {order.email}</li>)
+            }
         </div>
     );
 };

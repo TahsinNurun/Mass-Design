@@ -4,14 +4,15 @@ import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Vegetables = (props) => {
-
-    const { img, name, price } = props.vegetables;
+    
+    const { id, img, name, price } = props.vegetables;
+    // console.log(id)
 
     return (
-        <div className="col-md-3 col-sm-12" style={{ paddingTop: "30px"}} >
+        <div className="col-md-3 col-sm-12 container" style={{ padding: "50px"}} >
 
-            <Link to={`/orders/${name}`}>
-                <Card style={{ width: '18rem', height: '30rem', paddingLeft: "30px"  }}>
+            <Link to={`/checkOut/${id}`}>
+                <Card style={{ width: '16rem', height: '30rem', padding: "40px"  }}>
                     <Card.Img variant="top" src={img} alt="" />
                     <Card.Body>
                         <Card.Text>{name}</Card.Text>

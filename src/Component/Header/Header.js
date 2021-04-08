@@ -19,13 +19,16 @@ const Header = () => {
                             <Nav.Link style={textStyle} as={Link} to="/home">Home</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link style={textStyle} as={Link} to="/orders">Orders</Nav.Link>
+                            <Nav.Link style={textStyle} as={Link} to="/orderSummary">Orders</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link style={textStyle} as={Link} to="/admin">Admin</Nav.Link>
+                            <Nav.Link style={textStyle} as={Link} to="/manageVegetables">Admin</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                             <Nav.Link style={textStyle} as={Link} to="/deals">Deals</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link style={textStyle} as={Link} to="/login">Login</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                             <img src="" alt="" />
