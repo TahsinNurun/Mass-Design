@@ -6,18 +6,18 @@ import { useForm } from "react-hook-form";
 const AddVegetableByAdmin = () => {
 
     const { register, handleSubmit,  formState: { errors } } = useForm();
-    const [imageURL, setImageURL] = useState(null);
+    const [img, setImg] = useState(null);
 
     const onSubmit = data => {
         // console.log(data);
         const eventData = {
             name: data.vegeName,
-            imageURL: imageURL,
+            img: img,
             location: data.location,
             price: data.price,
             weight: data.weight
         };
-        const url = `http://localhost:5000/vegetables`;
+        const url = `https://limitless-tor-49961.herokuapp.com/vegetables`;
         console.log(eventData);
         fetch(url, {
             method: 'POST',
@@ -36,7 +36,7 @@ const AddVegetableByAdmin = () => {
         axios.post('https://api.imgbb.com/1/upload', imageData)
             .then(function (response) {
                 // console.log(data);
-                setImageURL(response.data.data.display_url);
+                setImg(response.data.data.display_url);
             })
             .catch(function (error) {
                 console.log(error);

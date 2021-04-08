@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Vegetables = (props) => {
     
     const { id, img, name, price } = props.vegetables;
-    // console.log(id)
+    // console.log(img);
 
     return (
         <div className="col-md-3 col-sm-12 container" style={{ padding: "50px"}} >

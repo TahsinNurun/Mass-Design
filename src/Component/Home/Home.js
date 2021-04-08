@@ -7,7 +7,7 @@ const Home = () => {
     const [vegetables, setVegetables] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/vegetables')
+        fetch('https://limitless-tor-49961.herokuapp.com/vegetables')
         .then(res => res.json())
         // .then(data => console.log(data));
         .then(data => setVegetables(data));

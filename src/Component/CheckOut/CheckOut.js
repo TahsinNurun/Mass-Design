@@ -27,7 +27,7 @@ const CheckOut = () => {
 
     const handleCheckOut = () =>{
         const newCheckOut = {...loggedInUser, ...selectedDate};
-        fetch('http://localhost:5000/orderSummary', {
+        fetch('https://limitless-tor-49961.herokuapp.com/orderSummary', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(newCheckOut)
@@ -42,7 +42,7 @@ const CheckOut = () => {
     const vege = exactVegetable.find(td => td.id == id);
 
     useEffect(() => {
-        fetch('http://localhost:5000/vegetables')
+        fetch('https://limitless-tor-49961.herokuapp.com/vegetables')
             .then(res => res.json())
             // .then(data => console.log(data));
             .then(data => setExactVegetable(data));
